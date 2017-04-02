@@ -2,7 +2,7 @@ PRODUCTS = []
 
 module StockManager
   class Product
-    attr_accessor :name, :unit_size, :market_price, :discount_price, :description
+    attr_reader :name, :unit_size, :market_price, :discount_price, :description
 
     def initialize(name, unit_size, market_price, discount_price, description)
       @name = name.upcase.to_s
@@ -15,18 +15,6 @@ module StockManager
 
     def self.all
       return PRODUCTS
-      # all_products = []
-      # PRODUCTS.each do |product|
-      #   puts product.name
-      #   # name = product[0].to_s
-      #   # unit_size = product[1].to_s
-      #   # market_price = product[2].to_f
-      #   # discount_price = product[3].to_f
-      #   # description = product[4].to_s
-      #   # a_product = StockManager::Product.new(name, unit_size, market_price, discount_price, description)
-      #   # all_products << a_product
-      # end
-      # # return all_products
     end
 
     def self.find(product_name)

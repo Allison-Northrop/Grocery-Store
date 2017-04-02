@@ -14,10 +14,12 @@ module StockManager
       return AISLE
     end
 
+#something is wrong here
     def self.find(aisle_name)
-      AISLE.each do |aisle|
-        if aisle.category == aisle_name
-          return aisle
+      all_aisles = StockManager::Aisle.all
+      all_aisles.each do |aisle|
+        if aisle.category == aisle_name.upcase
+          return aisle.products_in_aisle
         end
       end
     end
@@ -38,7 +40,15 @@ end
 
 a = StockManager::Aisle.new("baking")
 a.add_new_product("rice")
-a.add_new_product("poop")
+a.add_new_product("bread")
+
+b = StockManager::Aisle.new("produce")
+b.add_new_product("tomatoe")
+b.add_new_product("bok choy")
 
 AISLE << a
-print AISLE
+AISLE << b
+# print AISLE
+
+print StockManager::Aisle.find("baking")
+# puts AISLE
