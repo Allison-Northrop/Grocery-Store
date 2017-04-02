@@ -28,16 +28,15 @@ module StockManager
       end
     end
 
-      def discounted?
+    def discounted?
         #contains logic if it's discounted
 
-      end
+    end
 
 
 
     end
   end
-
 
   a = StockManager::Product.new("Alfalfa", "9 pounds", 1.90, 1, "kind of like hay")
   # puts a.name
@@ -48,7 +47,11 @@ module StockManager
   b = StockManager::Product.new("Rice", "1 pound", 3.00, 2, "it's great in sushi")
   # puts b.market_price
   #
-  c = StockManager::Product.new("bread", "9 pounds", 9.0, 33, "it's bread!")
+  c = StockManager::Product.new("bread", "9 pounds", 9.0, 3, "it's bread!")
+
+  d = StockManager::Product.new("cardemon", "1 oz", 10, 7.60, "it's delicious in tea")
+
+  e = StockManager::Product.new("bok choy", "1 pound", 3, 2.50, "good in soup")
   # puts b.market_price + a.market_price
   #
   # puts a.discount_price
@@ -58,6 +61,8 @@ module StockManager
   PRODUCTS << a
   PRODUCTS << b
   PRODUCTS << c
+  PRODUCTS << d
+  PRODUCTS << e 
 
   # puts StockManager::Product.all
-  StockManager::Product.find("rice")
+  # StockManager::Product.find("rice")

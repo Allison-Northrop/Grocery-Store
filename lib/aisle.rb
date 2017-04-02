@@ -1,5 +1,5 @@
 require_relative 'product'
-AISLE = []
+AISLES = []
 module StockManager
   class Aisle
 
@@ -11,10 +11,10 @@ module StockManager
     end
 
     def self.all
-      return AISLE
+      return AISLES
     end
 
-#something is wrong here
+
     def self.find(aisle_name)
       all_aisles = StockManager::Aisle.all
       all_aisles.each do |aisle|
@@ -23,6 +23,7 @@ module StockManager
         end
       end
     end
+
 
     def add_new_product(new_product)
       new_product = new_product.upcase
@@ -46,9 +47,15 @@ b = StockManager::Aisle.new("produce")
 b.add_new_product("tomatoe")
 b.add_new_product("bok choy")
 
-AISLE << a
-AISLE << b
+c = StockManager::Aisle.new("spices")
+c.add_new_product("cardemon")
+
+
+
+AISLES << a
+AISLES << b
+AISLES << c
 # print AISLE
 
-print StockManager::Aisle.find("baking")
+# print StockManager::Aisle.find("baking")
 # puts AISLE
