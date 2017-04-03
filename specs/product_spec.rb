@@ -32,11 +32,19 @@ describe "product class" do
     all_products.must_be_instance_of Array
   end
 
-  it "returns a product object" do
-    search = StockManager::Product.find(product_name)
+  it "raises an argument error if the product doesn't exist" do
+    proc { StockManager::Product.find("alskdjf;a asd") }.must_raise ArgumentError
+  end
+
+  it "returns a product that exist" do
+    a = StockManager::Product.new("Rice", "1 pound", 3.00, 2, "it's great in sushi")
+    search = StockManager::Product.find("rice")
     search.must_be_instance_of StockManager::Product
-
-
+    search.name.must_equal "RICE"
+    search.unit_size.must_equal "1 pound"
+    search.market_price.must_equal 3.00
+    search.discount_price.must_equal 2
+    search.description.must_equal "it's great in sushi"
   end
 
 
