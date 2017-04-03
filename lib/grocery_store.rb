@@ -43,7 +43,7 @@ module StockManager
     #returns an aisle if the product is in the aisle (keeps track if the)
     def find_product_in_aisle(product_name)
       @aisles.each do |aisle|
-        aisle.product_in_aisle.each do |product|
+        aisle.products_in_aisle.each do |product|
           if product.name == product_name.upcase
             return aisle
           end
@@ -60,6 +60,24 @@ module StockManager
       end
     end
 
+    def purchase(product_names)
+      product_amount = []
+      product_amount_discount = []
+      products_names.each do |product_name|
+        @products.each do |product|
+          if product_name == product.name
+            product_amount << product.market_price
+            product_amount_discount << product.discount_price
+            product.quantity -= 1
+          end
+        end
+      end
+      market_price_sum = product_amount.inject(:+)
+      discount_price_sum = product_amount_discount.inject(:+)
+      total_savings = market_price_sum - discount_price_sum
+      return total_savings, discount_price_sum
+    end
+
 
   end
 end
@@ -69,4 +87,4 @@ x = StockManager::Grocery_Store.new("albertsons")
 x.add_product("Rice", "1 pound", 3.00, 2, "it's great in sushi")
 x.add_product("bread", "9 pounds", 9.0, 3, "it's bread!")
 x.add_aisle("baking")
-print x.find_products_in_aisle("rice")
+print x.find_product_in_aisle("rice")
