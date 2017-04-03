@@ -8,6 +8,7 @@ module StockManager
     def initialize(category)
       @category = category.upcase
       @products_in_aisle = []
+      AISLES << self
     end
 
     def self.all
@@ -25,14 +26,13 @@ module StockManager
     end
 
 
-    def add_new_product(new_product)
-      new_product = new_product.upcase
-      PRODUCTS.each do |product|
-        if product.name == new_product
-          return @products_in_aisle << product
-        end
-        #here I need to raise an argument error if the product doesn't exist
-      end
+    def add_new_product(product)
+      # new_product = new_product.upcase
+      # PRODUCTS.each do |product|
+      #   if product.name == new_product
+      #     return
+      #since it's known the product will be a product object, I can safely assume the product will be a product object 
+       @products_in_aisle << product
     end
 
   end
@@ -40,7 +40,7 @@ end
 
 
 a = StockManager::Aisle.new("baking")
-a.add_new_product("rice")
+a.add_new_product("poop")
 a.add_new_product("bread")
 
 b = StockManager::Aisle.new("produce")
@@ -51,11 +51,6 @@ c = StockManager::Aisle.new("spices")
 c.add_new_product("cardemon")
 
 
-
-AISLES << a
-AISLES << b
-AISLES << c
-# print AISLE
 
 # print StockManager::Aisle.find("baking")
 # puts AISLE

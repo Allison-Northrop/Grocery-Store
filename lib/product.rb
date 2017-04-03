@@ -10,6 +10,7 @@ module StockManager
       @market_price = market_price.to_f
       @discount_price = discount_price.to_f
       @description = description.to_s
+      PRODUCTS << self
     end
 
 
@@ -21,15 +22,13 @@ module StockManager
       all_products = StockManager::Product.all
       all_products.each do |product|
         if product.name == product_name.upcase
-          print product
           return product
         end
-        #TODO raise an argument error here
+        raise ArgumentError.new("The product #{product_name} does not exist. Please add product and try again")
       end
     end
 
-    def discounted?
-        #contains logic if it's discounted
+    def discounted_price
 
     end
 
@@ -43,6 +42,8 @@ module StockManager
   # puts a.unit_size
   # puts a.market_price
   # puts a.description
+
+  # puts a.discounted
 
   b = StockManager::Product.new("Rice", "1 pound", 3.00, 2, "it's great in sushi")
   # puts b.market_price
@@ -58,11 +59,11 @@ module StockManager
   # puts b.discount_price
   # puts a.discount_price + b.discount_price
 
-  PRODUCTS << a
-  PRODUCTS << b
-  PRODUCTS << c
-  PRODUCTS << d
-  PRODUCTS << e 
+  # PRODUCTS << a
+  # PRODUCTS << b
+  # PRODUCTS << c
+  # PRODUCTS << d
+  # PRODUCTS << e
 
   # puts StockManager::Product.all
   # StockManager::Product.find("rice")
