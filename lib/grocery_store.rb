@@ -25,16 +25,8 @@ module StockManager
     def add_aisle(category)
       aisle = StockManager::Aisle.new(category)
       @aisles << aisle
-      return @aisles 
+      return @aisles
     end
-
-    #decrease inventory if a product is purchased
-    #TODO THIS ISN'T WORKING
-    def purchase_product(product_name)
-      @products.delete_at(@products.find_index(product_name) || @products.length)
-      return @products
-    end
-
 
 
     #find products in a specific aisle ** currnetly it's just showing not finding?
@@ -42,10 +34,12 @@ module StockManager
     #this isn't working TODO
     def show_products_in_aisle(aisle_category)
       @aisles.each do |aisle|
-        if aisle.category == aisle_category
-          return aisle.products_in_aisle
+        if aisle.category == aisle_category.upcase
+          k = aisle.products_in_aisle
+          return k
         end
       end
+      return
     end
 
 
@@ -78,39 +72,8 @@ end
 
 
 x = StockManager::Grocery_Store.new("albertsons")
-# puts x.add_product("alfalfa") * 3
-x.add_product("rice")
-x.add_product("rice")
-x.add_product("rice")
-x.add_product("cardemon")
-
+x.add_product("Rice", "1 pound", 3.00, 2, "it's great in sushi")
+x.add_product("bread", "9 pounds", 9.0, 3, "it's bread!")
 x.add_aisle("baking")
-x.add_aisle("spices")
-print x.product_aisle?("rice")
-
-
-# print x.product_aisle?("rice")
-# puts a.store_name
-# puts a.products
-
-# print x.aisles
-
-# print a.show_products_in_aisle
-# given a customer order (list of product IDs), be able to
-# calculate the total price of the order
-# calculate the total savings
-
-
-
-
-
-#product aisle
-#   @aisles.each do |aisle|
-#     aisle.each do |product|
-#       if product.name == product_name.upcase
-#         print aisle.category
-#         return aisle.category
-#       end
-#     end
-#   end
-# end
+k = x.show_products_in_aisle("baking sdjksd ")
+print k
