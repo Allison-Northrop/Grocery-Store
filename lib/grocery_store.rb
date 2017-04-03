@@ -22,13 +22,10 @@ module StockManager
     end
 
     #selects one of the aisles from teh aisle list and adds to the store
-    def add_aisle(aisle_name)
-      AISLES.each do |aisle|
-        if aisle.category == aisle_name.upcase
-          @aisles << aisle
-          return @aisles
-        end
-      end
+    def add_aisle(category)
+      aisle = StockManager::Aisle.new(category)
+      @aisles << aisle
+      return @aisles 
     end
 
     #decrease inventory if a product is purchased
