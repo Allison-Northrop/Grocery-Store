@@ -40,7 +40,7 @@ module StockManager
       return
     end
 
-    #returns an aisle if the product is in the aisle (keeps track if the)
+    #returns an aisle if the product is in the aisle 
     def find_product_in_aisle(product_name)
       @aisles.each do |aisle|
         aisle.products_in_aisle.each do |product|
