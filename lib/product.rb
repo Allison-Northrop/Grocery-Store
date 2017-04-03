@@ -10,6 +10,7 @@ module StockManager
       @market_price = market_price.to_f
       @discount_price = discount_price.to_f
       @description = description.to_s
+      @quantity = 0
       PRODUCTS << self
     end
 

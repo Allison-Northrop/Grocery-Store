@@ -29,9 +29,7 @@ module StockManager
     end
 
 
-    #find products in a specific aisle ** currnetly it's just showing not finding?
-    #TODO figure out how to search the returned info
-    #this isn't working TODO
+    #finds products in a specific aisle
     def show_products_in_aisle(aisle_category)
       @aisles.each do |aisle|
         if aisle.category == aisle_category.upcase
@@ -42,30 +40,26 @@ module StockManager
       return
     end
 
-
-    #keep track of which aisle each product is in
-    #TODO WHY IS THIS PRINTING ALL OF THE AISLES?
-    def product_aisle?(product_name)
+    #returns an aisle if the product is in the aisle (keeps track if the)
+    def find_product_in_aisle(product_name)
       @aisles.each do |aisle|
-        aisle.each do |product|
+        aisle.product_in_aisle.each do |product|
           if product.name == product_name.upcase
             return aisle
-          else
-            print "NOT IT"
           end
         end
       end
     end
 
-
-
-
-
-    # find products in a specific aisle
-    def find_products_in_aisle(product)
-
-
+    #grocery store purchases more inventory
+    def add_inventory(product_name, quantity)
+      @products.each do |product|
+        if product.name == product_name.upcase
+          product.quantity += quantity
+        end
+      end
     end
+
 
   end
 end
@@ -75,5 +69,4 @@ x = StockManager::Grocery_Store.new("albertsons")
 x.add_product("Rice", "1 pound", 3.00, 2, "it's great in sushi")
 x.add_product("bread", "9 pounds", 9.0, 3, "it's bread!")
 x.add_aisle("baking")
-k = x.show_products_in_aisle("baking sdjksd ")
-print k
+print x.find_products_in_aisle("rice")
