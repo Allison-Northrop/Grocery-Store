@@ -31,7 +31,7 @@ module StockManager
       # PRODUCTS.each do |product|
       #   if product.name == new_product
       #     return
-      #since it's known the product will be a product object, I can safely assume the product will be a product object 
+      #since it's known the product will be a product object, I can safely assume the product will be a product object
        @products_in_aisle << product
     end
 
@@ -39,18 +39,18 @@ module StockManager
 end
 
 
-a = StockManager::Aisle.new("baking")
-a.add_new_product("poop")
-a.add_new_product("bread")
-
-b = StockManager::Aisle.new("produce")
-b.add_new_product("tomatoe")
-b.add_new_product("bok choy")
-
-c = StockManager::Aisle.new("spices")
-c.add_new_product("cardemon")
-
-
+# a = StockManager::Aisle.new("baking")
+# a.add_new_product("foo")
+# a.add_new_product("bread")
+#
+# b = StockManager::Aisle.new("produce")
+# b.add_new_product("tomatoe")
+# b.add_new_product("bok choy")
+#
+# c = StockManager::Aisle.new("spices")
+# c.add_new_product("cardemon")
+#
+#
 
 # print StockManager::Aisle.find("baking")
 # puts AISLE
